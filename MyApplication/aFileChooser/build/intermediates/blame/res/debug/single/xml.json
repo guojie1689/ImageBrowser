@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\android_workspace\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\debug\\xml\\mimetypes.xml",
+        "source": "D:\\android_workspace\\MyApplication\\aFileChooser\\src\\main\\res\\xml\\mimetypes.xml"
+    },
+    {
+        "merged": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\debug\\xml\\mimetypes.xml",
+        "source": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\src\\main\\res\\xml\\mimetypes.xml"
+    }
+]

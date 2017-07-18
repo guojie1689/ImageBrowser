@@ -7,15 +7,14 @@ import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.DocumentsContract;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.ipaulpro.afilechooser.utils.FileUtils;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -51,6 +50,8 @@ public class MainActivity extends Activity {
     private int curImageIdx = 0;
     private int screenWidth;
     private int screenHeight;
+
+    private static final int REQUEST_CHOOSER = 1234;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,11 +128,10 @@ public class MainActivity extends Activity {
 
     @OnClick(R.id.img_setting)
     void chooseImageFolder() {
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.setType(DocumentsContract.Document.MIME_TYPE_DIR);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        startActivityForResult(intent, INFILE_CODE);
+        Intent getContentIntent = FileUtils.createGetContentIntent();
+
+        Intent intent = Intent.createChooser(getContentIntent, "Select a file");
+        startActivityForResult(intent, REQUEST_CHOOSER);
     }
 
     private List<String> getFiles(String filePath) {
@@ -152,7 +152,7 @@ public class MainActivity extends Activity {
     }
 
     private void setShowImageIdx(int idx) {
-        if (imageList == null || idx > imageList.size()) {
+        if (imageList == null || idx >= imageList.size()) {
             Toast.makeText(this, "未找到图片", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -173,21 +173,20 @@ public class MainActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         switch (requestCode) {
-            case INFILE_CODE:
+            case REQUEST_CHOOSER:
                 if (resultCode == RESULT_OK) {
-                    // Get the Uri of the selected file
-                    Uri uri = data.getData();
-                    Log.d(TAG, "File Uri: " + uri.toString());
-                    // Get the path
-                    String path = null;
-                    try {
-                        path = getPath(MainActivity.this, uri);
-                        Log.d("TAG", "get path:" + path);
-                        refreshImageFolder(path);
-                    } catch (URISyntaxException e) {
-                        e.printStackTrace();
-                    }
+
+                    final Uri uri = data.getData();
+
+                    // Get the File path from the Uri
+                    String path = FileUtils.getPath(this, uri);
+
                     Log.d(TAG, "File Path: " + path);
+
+                    // Alternatively, use FileUtils.getFile(Context, Uri)
+                    if (path != null && FileUtils.isLocal(path)) {
+                        refreshImageFolder(path);
+                    }
                 }
                 break;
         }

@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "D:\\android_workspace\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_folder.png",
+        "source": "D:\\android_workspace\\MyApplication\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_folder.png"
+    },
+    {
+        "merged": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_chooser.png",
+        "source": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_chooser.png"
+    },
+    {
+        "merged": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_provider.png",
+        "source": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_provider.png"
+    },
+    {
+        "merged": "D:\\android_workspace\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_chooser.png",
+        "source": "D:\\android_workspace\\MyApplication\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_chooser.png"
+    },
+    {
+        "merged": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_folder.png",
+        "source": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_folder.png"
+    },
+    {
+        "merged": "D:\\android_workspace\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_file.png",
+        "source": "D:\\android_workspace\\MyApplication\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_file.png"
+    },
+    {
+        "merged": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_file.png",
+        "source": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_file.png"
+    },
+    {
+        "merged": "D:\\android_workspace\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_provider.png",
+        "source": "D:\\android_workspace\\MyApplication\\aFileChooser\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_provider.png"
+    }
+]
