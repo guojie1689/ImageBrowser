@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\release\\layout\\file.xml",
+        "source": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\src\\main\\res\\layout\\file.xml"
+    },
+    {
         "merged": "D:\\android_workspace\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\release\\layout\\file.xml",
         "source": "D:\\android_workspace\\MyApplication\\aFileChooser\\src\\main\\res\\layout\\file.xml"
     }

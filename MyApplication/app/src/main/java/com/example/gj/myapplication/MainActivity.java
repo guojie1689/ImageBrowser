@@ -3,6 +3,7 @@ package com.example.gj.myapplication;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -10,8 +11,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.ipaulpro.afilechooser.utils.FileUtils;
@@ -42,10 +45,12 @@ public class MainActivity extends Activity {
     @BindView(R.id.btn_next)
     ImageView btn_next;
 
+    @BindView(R.id.rll_img_line)
+    RelativeLayout rll_img_line;
+
     private List<String> imageList = new ArrayList<>();
 
     private static String TAG = "MainActivity";
-    private static final int INFILE_CODE = 387;
 
     private int curImageIdx = 0;
     private int screenWidth;
@@ -60,12 +65,7 @@ public class MainActivity extends Activity {
 
         ButterKnife.bind(this);
 
-        WindowManager wm = (WindowManager) this
-                .getSystemService(Context.WINDOW_SERVICE);
-
-        screenWidth = wm.getDefaultDisplay().getWidth();
-        screenHeight = wm.getDefaultDisplay().getHeight();
-
+        updateScreenInfo();
 
         initLineImage();
     }
@@ -73,9 +73,43 @@ public class MainActivity extends Activity {
     private int lastX;
     private int lastY;
 
+    private void updateScreenInfo() {
+        WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+
+        screenWidth = wm.getDefaultDisplay().getWidth();
+        screenHeight = wm.getDefaultDisplay().getHeight();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        updateScreenInfo();
+        setShowImageIdx(curImageIdx);
+
+        img_line.getLayoutParams().width = screenWidth;
+        rll_img_line.getLayoutParams().width = screenWidth;
+
+        setLayoutY(rll_img_line, 50);
+    }
+
+    public static void setLayoutY(View view, int y) {
+        ViewGroup.MarginLayoutParams margin = new ViewGroup.MarginLayoutParams(view.getLayoutParams());
+        margin.setMargins(margin.leftMargin, y, margin.rightMargin, y + margin.height);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(margin);
+        view.setLayoutParams(layoutParams);
+
+        Log.d("GJ", "set y :" + y);
+    }
+
+    private static int getTopMargin(View view) {
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
+
+        return layoutParams.topMargin;
+    }
 
     private void initLineImage() {
-        img_line.setOnTouchListener(new View.OnTouchListener() {
+        rll_img_line.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 //获取Action
@@ -112,8 +146,10 @@ public class MainActivity extends Activity {
                             bottom = screenHeight;
                             top = bottom - v.getHeight();
                         }
-                        v.layout(left, top, right, bottom);
-                        Log.i("", "position：" + left + ", " + top + ", " + right + ", " + bottom);
+
+                        setLayoutY(v, top);
+                        //v.layout(left, top, right, bottom);
+                        Log.i("GJ", "position：" + left + ", " + top + ", " + right + ", " + bottom);
                         //将当前的位置再次设置
                         lastX = (int) event.getRawX();
                         lastY = (int) event.getRawY();
@@ -156,6 +192,7 @@ public class MainActivity extends Activity {
             Toast.makeText(this, "未找到图片", Toast.LENGTH_SHORT).show();
             return;
         }
+
         img_view.setImageBitmap(BitmapFactory.decodeFile(imageList.get(idx)));
     }
 

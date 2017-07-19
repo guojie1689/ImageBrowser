@@ -1,5 +1,29 @@
 [
     {
+        "outputFile": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-v11\\values-v11.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 53,
+                    "endOffset": 104
+                },
+                "from": {
+                    "file": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\src\\main\\res\\values-v11\\strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 658,
+                        "endColumn": 53,
+                        "endOffset": 707
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "D:\\android_workspace\\MyApplication\\aFileChooser\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-v11\\values-v11.xml",
         "map": [
             {

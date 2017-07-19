@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\ic_provider.png",
+        "source": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\src\\main\\res\\drawable-hdpi\\ic_provider.png"
+    },
+    {
         "merged": "D:\\android_workspace\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\ic_chooser.png",
         "source": "D:\\android_workspace\\MyApplication\\aFileChooser\\src\\main\\res\\drawable-hdpi\\ic_chooser.png"
     },
@@ -14,5 +18,17 @@
     {
         "merged": "D:\\android_workspace\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\ic_provider.png",
         "source": "D:\\android_workspace\\MyApplication\\aFileChooser\\src\\main\\res\\drawable-hdpi\\ic_provider.png"
+    },
+    {
+        "merged": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\ic_folder.png",
+        "source": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\src\\main\\res\\drawable-hdpi\\ic_folder.png"
+    },
+    {
+        "merged": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\ic_file.png",
+        "source": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\src\\main\\res\\drawable-hdpi\\ic_file.png"
+    },
+    {
+        "merged": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\ic_chooser.png",
+        "source": "D:\\android_workspace\\ImageBrowser\\MyApplication\\aFileChooser\\src\\main\\res\\drawable-hdpi\\ic_chooser.png"
     }
 ]
