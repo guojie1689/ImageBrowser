@@ -1,17 +1,21 @@
 package com.example.gj.myapplication;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ipaulpro.afilechooser.utils.FileUtils;
@@ -42,6 +46,9 @@ public class MainActivity extends Activity {
     @BindView(R.id.btn_next)
     ImageView btn_next;
 
+    @BindView(R.id.txt_file_name)
+    TextView txt_file_name;
+
     private List<String> imageList = new ArrayList<>();
 
     private static String TAG = "MainActivity";
@@ -60,12 +67,13 @@ public class MainActivity extends Activity {
 
         ButterKnife.bind(this);
 
+        requestReadExtelPermission();
+
         WindowManager wm = (WindowManager) this
                 .getSystemService(Context.WINDOW_SERVICE);
 
         screenWidth = wm.getDefaultDisplay().getWidth();
         screenHeight = wm.getDefaultDisplay().getHeight();
-
 
         initLineImage();
     }
@@ -156,6 +164,11 @@ public class MainActivity extends Activity {
             Toast.makeText(this, "未找到图片", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        File file = new File(imageList.get(idx));
+
+        txt_file_name.setText(curImageIdx + ":" + file.getName());
+
         img_view.setImageBitmap(BitmapFactory.decodeFile(imageList.get(idx)));
     }
 
@@ -204,7 +217,7 @@ public class MainActivity extends Activity {
             return;
         }
 
-        curImageIdx = 0;
+        curImageIdx = imageList.indexOf(filePathString);
 
         //刷新ImageView
         setShowImageIdx(curImageIdx);
@@ -246,5 +259,19 @@ public class MainActivity extends Activity {
             return uri.getPath();
         }
         return null;
+    }
+
+    private void requestReadExtelPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                if (shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                } else {
+                    requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+                }
+            } else {
+                Log.d(TAG, "READ permission is granted...");
+            }
+        }
     }
 }
