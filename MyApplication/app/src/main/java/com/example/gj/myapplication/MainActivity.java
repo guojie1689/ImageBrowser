@@ -17,8 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ipaulpro.afilechooser.utils.FileUtils;
@@ -26,6 +26,8 @@ import com.ipaulpro.afilechooser.utils.FileUtils;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -73,7 +75,6 @@ public class MainActivity extends Activity {
         ButterKnife.bind(this);
 
         updateScreenInfo();
-
         initLineImage();
     }
 
@@ -105,14 +106,6 @@ public class MainActivity extends Activity {
         margin.setMargins(margin.leftMargin, y, margin.rightMargin, y + margin.height);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(margin);
         view.setLayoutParams(layoutParams);
-
-        Log.d("GJ", "set y :" + y);
-    }
-
-    private static int getTopMargin(View view) {
-        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
-
-        return layoutParams.topMargin;
     }
 
     private void initLineImage() {
@@ -245,6 +238,29 @@ public class MainActivity extends Activity {
         File filePath = new File(filePathString);
 
         imageList = getFiles(filePath.getParentFile().getPath());
+
+        Collections.sort(imageList, new Comparator<String>() {
+            @Override
+            public int compare(String filename1, String fileName2) {
+                File file1 = new File(filename1);
+                File file2 = new File(fileName2);
+
+                String comFileName1 = file1.getName();
+                String comFileName2 = file2.getName();
+
+                try {
+                    comFileName1 = comFileName1.substring(0, comFileName1.lastIndexOf("."));
+                    comFileName2 = comFileName2.substring(0, comFileName2.lastIndexOf("."));
+
+                    return Integer.parseInt(comFileName1) - Integer.parseInt(comFileName2);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                return 0;
+            }
+        });
 
         if (imageList == null) {
             Toast.makeText(this, "未找到图片文件", Toast.LENGTH_SHORT).show();
